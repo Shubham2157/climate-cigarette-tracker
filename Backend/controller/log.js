@@ -5,23 +5,26 @@ const path = require('path');
 //                 LOGS
 
 router.get("/application.log", (req, res) => {
-  const file = path.join(__dirname, '..','log', 'app.log')
-  var d = new Date().toLocaleString('en-US', {timeZone: 'Asia/Kolkata'})
-  var filename = `application_logs-${d}.log`
-  filename = filename.replaceAll('/','_')
-  filename = filename.replaceAll(':','_')
-  filename = filename.replaceAll(',','')
-  res.download(file, filename)
+  // const file = path.join(__dirname, '..','log', 'app.log')
+  // var d = new Date().toLocaleString('en-US', {timeZone: 'Asia/Kolkata'})
+  // var filename = `application_logs-${d}.log`
+  // filename = filename.replaceAll('/','_')
+  // filename = filename.replaceAll(':','_')
+  // filename = filename.replaceAll(',','')
+  // res.download(file, filename)
+
+  res.send({ "msg" : "coming soon"})
 })
 
 router.get("/error.log", (req, res) => {
-  const file = path.join(__dirname, '..','log', 'error.log')
-  var d = new Date().toLocaleString('en-US', {timeZone: 'Asia/Kolkata'})
-  const filename = `error_logs-${d}.log`
-  filename = filename.replaceAll('/','_')
-  filename = filename.replaceAll(':','_')
-  filename = filename.replaceAll(',','')
-  res.download(file, filename)
+  // const file = path.join(__dirname, '..','log', 'error.log')
+  // var d = new Date().toLocaleString('en-US', {timeZone: 'Asia/Kolkata'})
+  // const filename = `error_logs-${d}.log`
+  // filename = filename.replaceAll('/','_')
+  // filename = filename.replaceAll(':','_')
+  // filename = filename.replaceAll(',','')
+  // res.download(file, filename)
+  res.send({ "msg" : "coming soon"})
 })
 
 module.exports = router

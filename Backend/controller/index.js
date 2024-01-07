@@ -28,4 +28,24 @@ router.post("/send/location", async (req, res) => {
     
 });
 
+router.post("/calculate", async (req, res) => {
+    logger.info(`Requested ${req.method} method at ${baseURL + req.url}`)
+    try {
+        var { aqi } = req.body
+        logger.info(`User Data AQI =  ${aqi}`)
+        var noOfCigarette = await calculateCigaretteFromAQI(aqi)
+        logger.info(noOfCigarette);
+        return res.status(200).json(
+            {
+                'msg' : 'success',
+                aqi,
+                noOfCigarette
+            });
+    } catch (error) {
+        logger.error("error : "+error)
+        res.status(500).json({ "errors": [{ "title": "Internal Server Error", "code": "500", "status": error }] })
+    }
+    
+});
+
 module.exports = router
