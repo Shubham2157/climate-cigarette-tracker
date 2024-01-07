@@ -42,13 +42,13 @@
               "type": "object",
               "properties": {
                 "lat": {
-                  "example": "any"
+                  "example": "23.963044"
                 },
                 "lon": {
-                  "example": "any"
+                  "example": "86.8027604"
                 },
                 "location": {
-                  "example": "any"
+                  "example": "Jamtara"
                 }
               }
             }
@@ -75,7 +75,7 @@
               "type": "object",
               "properties": {
                 "aqi": {
-                  "example": "any"
+                  "example": "200"
                 }
               }
             }
