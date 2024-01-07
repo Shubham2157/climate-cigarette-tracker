@@ -5,10 +5,10 @@
     "description": "This Backend will Handle all the user request to get Amount of cigarette consume due to pollution and recommend prevenstion or todo etc.",
     "version": "1.0.0"
   },
-  "host": "localhost:3001",
+  "host": "shy-crab-swimsuit.cyclic.app",
   "basePath": "/",
   "schemes": [
-    "http"
+    "https"
   ],
   "paths": {
     "/logs/downloads/application.log": {

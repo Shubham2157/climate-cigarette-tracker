@@ -5,7 +5,7 @@ const path = require('path');
 const PORT = process.env.PORT || 3001
 const IP = process.env.IP || "127.0.0.1"
 
-const LOG_PATH = process.env.LOG_PATH || 'logs';
+const LOG_PATH = process.env.LOG_PATH || 'prod-logs';
 
 var options = {
     file: {
