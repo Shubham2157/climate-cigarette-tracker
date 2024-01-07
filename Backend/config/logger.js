@@ -1,11 +1,16 @@
 const { createLogger, format, transports } = require('winston');
 const { combine, timestamp, label, printf } = format;
 const path = require('path');
+var fs = require('fs')
 
 const PORT = process.env.PORT || 3001
 const IP = process.env.IP || "127.0.0.1"
 
-const LOG_PATH = process.env.LOG_PATH || 'prod-logs';
+const LOG_PATH = process.env.LOG_PATH || 'log';
+const dir = path.join(__dirname, '..' ,LOG_PATH)
+if (!fs.existsSync(dir)){
+  fs.mkdirSync(dir);
+}
 
 var options = {
     file: {
