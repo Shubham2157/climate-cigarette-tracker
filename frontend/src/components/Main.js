@@ -9,7 +9,7 @@ import {
 import React, {useState, useEffect } from 'react';
  import axios from 'axios';
 
-
+ const BASE_URL = process.env.REACT_APP_API_BASE_URL;
   export function Main() {
     const [city, setCity] = useState('');
     const [response, setResponse] = useState('0');
@@ -20,7 +20,7 @@ import React, {useState, useEffect } from 'react';
      }, [response]); // Makes the useEffect dependent on response.
   
      function callAPI(city) {
-        var url = 'http://localhost:3001/api/v1/send/location';
+        var url = BASE_URL;
         axios.post(url, {
         "location" : city
       })
