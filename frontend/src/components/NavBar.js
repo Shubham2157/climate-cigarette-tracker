@@ -1,25 +1,15 @@
 import React from "react";
-import {
-  Navbar,
-  Collapse,
-  Typography,
-  IconButton,
-} from "@material-tailwind/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import img from '../media/cigarette.png';
+
 function NavList() {
   return (
-    <ul className="my-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-      <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-medium"
-      >
-        <a href="/" className="flex items-center hover:text-blue-500 transition-colors">
+    <ul className="flex flex-col gap-4 lg:flex-row lg:items-center lg:gap-8">
+      <li>
+        <a href="/" className="text-white font-medium hover:text-blue-100 transition-colors duration-300">
           Location
         </a>
-      </Typography>
+      </li>
     </ul>
   );
 }
@@ -32,47 +22,46 @@ export function NavBar() {
  
   React.useEffect(() => {
     window.addEventListener("resize", handleWindowResize);
- 
     return () => {
       window.removeEventListener("resize", handleWindowResize);
     };
   }, []);
  
   return (
-    <Navbar className="mx-auto max-w-screen-xl px-6 py-3">
-      <div className="flex items-center justify-between text-blue-gray-900">
-      <div className="flex justify-between">
-      <Typography
-          as="a"
-          href="/"
-          variant="h6"
-          className="mr-4 cursor-pointer py-1.5"
-        >
-            Sutta Tracker
-        </Typography>
-      <img className="mb-2" src= {img} alt="Sutta Tracker" />
+    <nav className="backdrop-blur-md bg-white/10 shadow-lg sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto px-6 py-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <img src={img} alt="Logo" className="h-8 w-8" />
+            <a href="/" className="text-2xl font-bold text-white">
+              Climate Tracker
+            </a>
+          </div>
+          
+          <div className="hidden lg:block">
+            <NavList />
+          </div>
+
+          <button
+            className="lg:hidden text-white hover:bg-white/20 p-2 rounded-lg transition-colors"
+            onClick={() => setOpenNav(!openNav)}
+          >
+            {openNav ? (
+              <XMarkIcon className="h-6 w-6" />
+            ) : (
+              <Bars3Icon className="h-6 w-6" />
+            )}
+          </button>
         </div>
-        
-        <div className="hidden lg:block">
-          <NavList />
-        </div>
-        <IconButton
-          variant="text"
-          className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"
-          ripple={false}
-          onClick={() => setOpenNav(!openNav)}
-        >
-          {openNav ? (
-            <XMarkIcon className="h-6 w-6" strokeWidth={2} />
-          ) : (
-            <Bars3Icon className="h-6 w-6" strokeWidth={2} />
-          )}
-        </IconButton>
+
+        {/* Mobile Menu */}
+        {openNav && (
+          <div className="lg:hidden mt-4 pb-4 border-t border-white/20">
+            <NavList />
+          </div>
+        )}
       </div>
-      <Collapse open={openNav}>
-        <NavList />
-      </Collapse>
-    </Navbar>
+    </nav>
   );
 }
 
