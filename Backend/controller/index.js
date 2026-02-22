@@ -10,6 +10,7 @@ router.post("/send/location", async (req, res) => {
         var {lat, lon, location} = req.body
         logger.info(`User Data lat =  ${lat} long = ${lon} location = ${location}`)
         var aqi = await getAQI(lat, lon, location)
+        //var aqi = 161;
         var noOfCigarette = await calculateCigaretteFromAQI(aqi)
         logger.info(noOfCigarette);
         return res.status(200).json(
